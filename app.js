@@ -1,11 +1,11 @@
-const grid = document.querySelector(".grid");
-let gridWidth = 16;
-let gridHeight = 16;
+let gridSize = 16;
 
-function createGridCells(width, height) {
+const grid = document.querySelector(".grid");
+
+function createGridCells(size) {
   const cells = [];
-  for (let i = 0; i < width; i++) {
-    for (let j = 0; j < height; j++) {
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
       const cell = '<div class="grid-cell"></div>';
       cells.push(cell);
     }
@@ -13,24 +13,23 @@ function createGridCells(width, height) {
   return cells.join("");
 }
 
-function displayGrid(width, height) {
-  grid.innerHTML = createGridCells(width, height);
+function displayGrid(size) {
+  grid.innerHTML = createGridCells(size);
   grid
     .querySelectorAll(".grid-cell")
     .forEach((cell) =>
       cell.addEventListener("mouseenter", color, { once: true })
     );
-  grid.style.aspectRatio = gridWidth / gridHeight;
   sizeGrid();
 }
 
 function sizeGrid() {
   const gridBorder = getBorderWidthInPx(grid);
-  const maxCellWidth = (window.innerWidth - 2 * gridBorder) / gridWidth;
-  const maxCellHeight = (window.innerHeight - 2 * gridBorder) / gridHeight;
+  const maxCellWidth = (window.innerWidth - 2 * gridBorder) / gridSize;
+  const maxCellHeight = (window.innerHeight - 2 * gridBorder) / gridSize;
   const cellSize = Math.min(maxCellWidth, maxCellHeight);
-  grid.style.gridTemplateRows = `repeat(${gridHeight}, minmax(0, ${cellSize}px))`;
-  grid.style.gridTemplateColumns = `repeat(${gridWidth}, minmax(0, ${cellSize}px))`;
+  grid.style.gridTemplateRows = `repeat(${gridSize}, minmax(0, ${cellSize}px))`;
+  grid.style.gridTemplateColumns = `repeat(${gridSize}, minmax(0, ${cellSize}px))`;
 }
 
 function getBorderWidthInPx(element) {
@@ -54,4 +53,4 @@ function color() {
 // TODO: debounce
 window.addEventListener("resize", sizeGrid);
 
-displayGrid(gridWidth, gridHeight);
+displayGrid(gridSize);
