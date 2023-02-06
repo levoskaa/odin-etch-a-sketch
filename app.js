@@ -15,6 +15,11 @@ function createGridCells(width, height) {
 
 function displayGrid(width, height) {
   grid.innerHTML = createGridCells(width, height);
+  grid
+    .querySelectorAll(".grid-cell")
+    .forEach((cell) =>
+      cell.addEventListener("mouseenter", color, { once: true })
+    );
   grid.style.aspectRatio = gridWidth / gridHeight;
   sizeGrid();
 }
@@ -40,6 +45,10 @@ function getBorderWidthInPx(element) {
     .getComputedStyle(element)
     .borderWidth.match(widthRegex)[1];
   return parseFloat(borderWidth);
+}
+
+function color() {
+  this.classList.add("colored");
 }
 
 // TODO: debounce

@@ -33,3 +33,7 @@ body {
 .grid-cell {
   aspect-ratio: 1/1;
 }
+
+.colored {
+  background-color: #333;
+}
