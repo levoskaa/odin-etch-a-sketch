@@ -27,7 +27,7 @@ body {
 .grid-wrapper {
   display: grid;
   grid-template-columns: 150px minmax(0, 1fr) 150px;
-  grid-template-rows: 30px minmax(0, 1fr) 30px;
+  grid-template-rows: 30px minmax(0, 1fr) 80px;
   width: 800px;
   height: 70%;
   background-color: #a52a2a;
@@ -76,4 +76,12 @@ body {
 
 .decoration-btn.right {
   grid-column: 3 / span 1;
+}
+
+.controls {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

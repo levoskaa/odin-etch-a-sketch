@@ -1,6 +1,7 @@
 let gridSize = 16;
 
 const grid = document.querySelector(".grid");
+const gridSizeControl = document.querySelector("input[name=size]");
 
 function createGridCells(size) {
   const cells = [];
@@ -27,5 +28,7 @@ function displayGrid(size) {
 function color() {
   this.classList.add("colored");
 }
+
+gridSizeControl.addEventListener("change", (e) => displayGrid(e.target.value));
 
 displayGrid(gridSize);
