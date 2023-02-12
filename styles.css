@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap");
+
+:root {
+  --background-color: #89cff0;
+  --device-primary: #a52a2a;
+  --device-secondary: #fdda0d;
+  --device-secondary-accent: #f58829;
+  --sketch-pad-color: #e5e4e2;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -21,7 +31,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #89cff0;
+  background-color: var(--background-color);
+}
+
+:is(button, input, label):hover {
+  cursor: pointer;
 }
 
 .grid-wrapper {
@@ -30,7 +44,7 @@ body {
   grid-template-rows: 30px minmax(0, 1fr) 80px;
   width: 800px;
   height: 70%;
-  background-color: #a52a2a;
+  background-color: var(--device-primary);
   border-radius: 3rem 3rem 6rem 6rem;
 }
 
@@ -41,17 +55,13 @@ body {
   height: 100%;
   display: grid;
   aspect-ratio: 1/1;
-  background-color: #e5e4e2;
-}
-
-.colored {
-  background-color: #333;
+  background-color: var(--sketch-pad-color);
 }
 
 .decoration-btn {
   grid-row: 2 / span 1;
   position: relative;
-  background-color: #fdda0d;
+  background-color: var(--device-secondary);
   border-radius: 50%;
   width: 70%;
   aspect-ratio: 1/1;
@@ -62,7 +72,7 @@ body {
 .decoration-btn::before {
   content: "";
   position: absolute;
-  background-color: #f58829;
+  background-color: var(--device-secondary-accent);
   top: 0.3em;
   left: calc(50% - 0.2em);
   width: 0.4em;
@@ -84,4 +94,36 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+label[for^="drawing-mode"] {
+  background-color: var(--device-secondary);
+  padding: 0.25em 0.75em;
+  border-radius: 4px;
+  font-family: "Comfortaa", cursive;
+  font-weight: 700;
+}
+
+label[for^="drawing-mode"]:hover {
+  outline: var(--device-secondary) solid 2px;
+  outline-offset: 4px;
+  transition: outline 200ms ease-out, outline-offset 200ms ease-out;
+}
+
+input[name="drawing-mode"]:checked + label {
+  background-color: var(--device-secondary-accent);
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
