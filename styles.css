@@ -55,6 +55,9 @@ body {
   height: 100%;
   display: grid;
   aspect-ratio: 1/1;
+}
+
+.grid-cell {
   background-color: var(--sketch-pad-color);
 }
 
