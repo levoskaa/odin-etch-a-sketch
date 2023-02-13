@@ -5,10 +5,11 @@ const drawingMode = {
   INCREMENTAL: "incremental",
 };
 const BG_COLOR = "#e4e3e2";
-const DEFAULT_COLOR = "#333";
+const DRAW_COLOR = "#333";
 
 const grid = document.querySelector(".grid");
 const gridSizeControl = document.querySelector("input[name=size]");
+const resetBtn = document.querySelector(".reset-btn");
 
 function createGridCells(size) {
   const cells = [];
@@ -37,7 +38,7 @@ function onCellHover() {
 
   switch (selectedDrawingMode) {
     case drawingMode.REGULAR:
-      this.style.backgroundColor = DEFAULT_COLOR;
+      this.style.backgroundColor = DRAW_COLOR;
       break;
     case drawingMode.RAINBOW:
       this.style.backgroundColor = getRandomColor();
@@ -107,6 +108,12 @@ function rgb2hsl(rgbString) {
   return `hsl(${hue}, ${sat}%, ${lght}%)`;
 }
 
+function clearGrid() {
+  const cells = grid.querySelectorAll(".grid-cell");
+  cells.forEach((cell) => (cell.style.backgroundColor = BG_COLOR));
+}
+
 gridSizeControl.addEventListener("change", (e) => displayGrid(e.target.value));
+resetBtn.addEventListener("click", clearGrid);
 
 displayGrid(gridSize);

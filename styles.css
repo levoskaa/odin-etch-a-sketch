@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap");
+@import url("https://cdn.lineicons.com/4.0/lineicons.css");
 
 :root {
   --background-color: #89cff0;
@@ -89,6 +90,28 @@ body {
 
 .decoration-btn.right {
   grid-column: 3 / span 1;
+}
+
+.reset-btn {
+  font-size: 1rem;
+  grid-row: 1 / span 1;
+  grid-column: 3 / span 1;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: var(--device-primary);
+  color: var(--device-secondary);
+  justify-self: center;
+  align-self: flex-end;
+}
+
+.reset-btn:hover {
+  color: var(--device-secondary-accent);
+  transition: color 200ms ease-out;
 }
 
 .controls {
